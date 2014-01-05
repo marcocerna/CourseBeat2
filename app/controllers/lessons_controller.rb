@@ -1,7 +1,20 @@
 class LessonsController < ApplicationController
 
-def index
+  def index
+    @lessons = Lesson.all
+  end
 
-end
+  def new
+
+  end
+
+  def create
+    @lesson = Lesson.create(params[:lesson])
+    render json: @lesson, status: 201
+  end
+
+  def show
+
+  end
 
 end

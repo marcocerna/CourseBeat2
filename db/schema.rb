@@ -11,6 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20140104024552) do
+
+  create_table "key_concepts", :force => true do |t|
+    t.string   "info"
+    t.integer  "lesson_id"
+    t.integer  "ratingCount"
+    t.float    "ratingAverage"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "lessons", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "sub_concepts", :force => true do |t|
+    t.string   "info"
+    t.integer  "key_concept_id"
+    t.integer  "ratingCount"
+    t.float    "ratingAverage"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
 end
