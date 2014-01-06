@@ -37,3 +37,15 @@ body {
 #your-lessons {
   font-family: Raleway;
 }
+
+.category-div {
+  margin: 10px;
+  padding: 10px;
+}
+
+#text-goes-here input {
+  border: 0px;
+  border-bottom: 1px solid black;
+  width: 350px;
+  margin-bottom: 5px;
+}

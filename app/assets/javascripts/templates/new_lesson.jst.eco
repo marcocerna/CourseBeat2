@@ -1,6 +1,5 @@
-<p>Title</p>
-<input id="new-lesson-text" type="text">
+<input id="new-lesson-text" type="text" placeholder="Enter Title">
 
 <a id="new-category" class="btn btn-primary" style="float:right">Add Category</a>
-
+<br><br>
 <div id="categories-list"></div>
