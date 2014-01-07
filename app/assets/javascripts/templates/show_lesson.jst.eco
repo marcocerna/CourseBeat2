@@ -1,0 +1,7 @@
+<a class="back-to-main" href="#">Back to Main</a>
+<h1><%= @lesson.title %></h1>
+
+<% for cat, array of @categories: %>
+  <h3><%= cat %></h3>
+  <h4><%= concept.info for concept in array %></h4>
+<% end %>

@@ -18,29 +18,35 @@ $ ->
 
   # Submit new lesson
   $('#create-lesson').on 'click', (event) ->
-    categories = $('.category-text')
-    concepts = $('.concept-text')
+    dataObj = createConceptObj($('.category-text'), $('.concept-text'))
+    data =
+      lesson: { title: $('#new-lesson-text').val() }
+      categories: dataObj
+    $.post('/lessons', data).done (data) ->
+      $('#show-lessons').append(JST['templates/lesson_small'](data))
+      $('.modal').modal('hide')
+
+  createConceptObj = (categories, concepts) ->
     conceptArray = []
-
     dataObj = {}
-
     for category in categories
       cat = $(category).val()
       concepts = $(category).parent().find('.concept-text')
-
       for concept in concepts
         conceptArray.push($(concept).val())
-
       dataObj[cat] = conceptArray
       conceptArray = []
+    return dataObj
 
-    data = {
-      lesson:
-        {
-          title: $('#new-lesson-text').val()
-        }
-      categories: dataObj
-    }
-    $.post('/lessons', data).done (data) ->
-      $('#show-lessons').append(data.title)
-      $('.modal').modal('hide')
+  $('body').on 'click', '.lesson-small', (event) ->
+    lessonID = $(this)[0].id
+    $.get('/lessons/' + lessonID).done (data) ->
+      console.log data
+      $('#index').slideUp()
+      $('#render-data').append(JST['templates/show_lesson'](data))
+      $('#render-data').slideDown()
+
+  $('body').on 'click', '.back-to-main', (event) ->
+    $('#index').slideDown()
+    $('#render-data').slideUp()
+    $('#render-data').empty()

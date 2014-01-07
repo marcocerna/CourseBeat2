@@ -1,0 +1,4 @@
+<div class="lesson-small">
+  <h3><%= @title %></h3>
+  <a href="#">Show</a>
+</div>

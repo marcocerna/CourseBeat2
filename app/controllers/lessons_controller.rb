@@ -18,7 +18,17 @@ class LessonsController < ApplicationController
   end
 
   def show
+    @data = {}
+    @data["lesson"] = Lesson.find(params[:id])
+    categories = KeyConcept.where(lesson_id: @data["lesson"].id)
+    concepts = {}
 
+    categories.each do |cat|
+      concepts[cat.info] = SubConcept.where(key_concept_id: cat.id)
+    end
+
+    @data["categories"] = concepts
+    render json: @data, status: 201
   end
 
 end

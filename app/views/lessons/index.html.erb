@@ -1,4 +1,4 @@
-<div class="container">
+<div id='index' class="container">
   <h1 id="welcome" >Welcome to CourseBeat!</h1>
 
   <div id="show-lessons">
@@ -9,11 +9,11 @@
     <h2 id="your-lessons">Your Lessons</h2>
 
     <% @lessons.each do |l| %>
-      <h3><%= l.title %></h3>
+      <%= render 'lesson_small', l: l %>
     <% end %>
   </div>
-
-  <div id="render-data"></div>
 </div>
+
+<div id="render-data" class="container"></div>
 
 <%= render 'modal' %>
