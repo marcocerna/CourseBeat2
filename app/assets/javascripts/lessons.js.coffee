@@ -19,18 +19,27 @@ $ ->
   # Submit new lesson
   $('#create-lesson').on 'click', (event) ->
     categories = $('.category-text')
-    categoryArray = []
+    concepts = $('.concept-text')
+    conceptArray = []
+
+    dataObj = {}
 
     for category in categories
-      categoryArray.push($(category).val())
+      cat = $(category).val()
+      concepts = $(category).parent().find('.concept-text')
 
-    debugger
+      for concept in concepts
+        conceptArray.push($(concept).val())
+
+      dataObj[cat] = conceptArray
+      conceptArray = []
+
     data = {
       lesson:
         {
           title: $('#new-lesson-text').val()
         }
-      categories: categoryArray
+      categories: dataObj
     }
     $.post('/lessons', data).done (data) ->
       $('#show-lessons').append(data.title)
