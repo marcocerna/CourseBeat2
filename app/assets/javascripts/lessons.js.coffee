@@ -18,12 +18,20 @@ $ ->
 
   # Submit new lesson
   $('#create-lesson').on 'click', (event) ->
-    lesson = {
+    categories = $('.category-text')
+    categoryArray = []
+
+    for category in categories
+      categoryArray.push($(category).val())
+
+    debugger
+    data = {
       lesson:
         {
           title: $('#new-lesson-text').val()
         }
+      categories: categoryArray
     }
-    $.post('/lessons', lesson).done (data) ->
+    $.post('/lessons', data).done (data) ->
       $('#show-lessons').append(data.title)
       $('.modal').modal('hide')

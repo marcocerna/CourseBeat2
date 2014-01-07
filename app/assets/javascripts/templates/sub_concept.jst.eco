@@ -1,1 +1,1 @@
-<input type="text" placeholder="Concept"><br>
+<input class="concept-text" type="text" placeholder="Concept"><br>
