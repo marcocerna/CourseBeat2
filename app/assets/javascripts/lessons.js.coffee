@@ -51,3 +51,7 @@ $ ->
     $('#index').slideDown()
     $('#render-data').slideUp()
     $('#render-data').empty()
+
+  # Radio buttons
+  $('body').on 'click', ':radio', (event) ->
+    console.log $(this).parent()
