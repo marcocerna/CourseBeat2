@@ -2,6 +2,16 @@
 <h1><%= @lesson.title %></h1>
 
 <% for cat, array of @categories: %>
+  <div style="background-color:rgba(192, 192, 192, .85);width:500px;padding:5px;border: 1px solid black; margin: 5px">
   <h3><%= cat %></h3>
-  <h4><%= concept.info for concept in array %></h4>
+  <% for concept in array: %>
+    <h4 style="margin:5px"><%= concept.info %></h4>
+    <input type="radio" value="1"> 1
+    <input type="radio" value="2"> 2
+    <input type="radio" value="3"> 3
+    <input type="radio" value="4"> 4
+    <input type="radio" value="5"> 5
+    <a href="#" class="submit-rating">Vote</a>
+  <% end %>
+  </div>
 <% end %>

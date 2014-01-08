@@ -38,14 +38,15 @@ $ ->
       conceptArray = []
     return dataObj
 
+  # Show Lesson
   $('body').on 'click', '.lesson-small', (event) ->
     lessonID = $(this)[0].id
     $.get('/lessons/' + lessonID).done (data) ->
-      console.log data
       $('#index').slideUp()
       $('#render-data').append(JST['templates/show_lesson'](data))
       $('#render-data').slideDown()
 
+  # Back to Main
   $('body').on 'click', '.back-to-main', (event) ->
     $('#index').slideDown()
     $('#render-data').slideUp()
