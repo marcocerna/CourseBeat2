@@ -31,4 +31,13 @@ class LessonsController < ApplicationController
     render json: @data, status: 201
   end
 
+  def vote
+    @concept = SubConcept.find(params[:id])
+    @concept.update_attributes(ratingCount: @concept.ratingCount + 1)
+    numerator = (@concept.ratingAverage * (@concept.ratingCount - 1)) + params[:value].to_f
+    @concept.update_attributes(ratingAverage: numerator / @concept.ratingCount)
+
+    render json: @concept, status: 201
+  end
+
 end

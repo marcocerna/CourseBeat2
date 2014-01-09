@@ -6,12 +6,15 @@
   <h3><%= cat %></h3>
   <% for concept in array: %>
     <h4 style="margin:5px"><%= concept.info %></h4>
-    <input type="radio" value="1"> 1
-    <input type="radio" value="2"> 2
-    <input type="radio" value="3"> 3
-    <input type="radio" value="4"> 4
-    <input type="radio" value="5"> 5
-    <a href="#" class="submit-rating">Vote</a>
+    <p class="current-rating">Current Rating: <%= concept.ratingAverage %></p>
+    <div>
+      <input id=<%= concept.id %> type="radio" value="1"> 1
+      <input id=<%= concept.id %> type="radio" value="2"> 2
+      <input id=<%= concept.id %> type="radio" value="3"> 3
+      <input id=<%= concept.id %> type="radio" value="4"> 4
+      <input id=<%= concept.id %> type="radio" value="5"> 5
+      <a href="#" class="submit-rating">Vote</a>
+    </div>
   <% end %>
   </div>
 <% end %>

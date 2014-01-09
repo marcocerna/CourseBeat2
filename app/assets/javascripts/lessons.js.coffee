@@ -52,6 +52,16 @@ $ ->
     $('#render-data').slideUp()
     $('#render-data').empty()
 
-  # Radio buttons
+  # Only one radio button can be selected at a time
   $('body').on 'click', ':radio', (event) ->
-    console.log $(this).parent()
+    $radios = $(this).parent().children('input')
+    $radios.not(this).prop('checked', false)
+
+  # Update rating
+  $('body').on 'click', '.submit-rating', (event) ->
+    selected = $(this).parent().children('input:checked')
+    data =
+      value: selected.val()
+      id: selected[0].id
+    $.post('/lessons/vote', data).done (data) ->
+      $(this).parent().children('.current-rating').empty()
