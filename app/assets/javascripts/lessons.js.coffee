@@ -20,7 +20,7 @@ $ ->
       lesson: { title: $('#new-lesson-text').val() }
       categories: dataObj
     $.post('/lessons', data).done (data) ->
-      $('#show-lessons').append(JST['templates/lesson_small'](data))
+      $('#show-lessons').append JST['templates/lesson_small'](data)
       $('.modal').modal('hide')
 
   createConceptObj = (categories, concepts) ->
@@ -44,8 +44,9 @@ $ ->
 
   # Back to Main
   $('body').on 'click', '.back-to-main', (event) ->
+    $('#render-data').slideUp()
     $('#index').slideDown()
-    $('#render-data').slideUp().empty()
+    setTimeout $('#render-data').empty(), 500
 
   # Only one radio button can be selected at a time
   $('body').on 'click', ':radio', (event) ->
@@ -54,12 +55,11 @@ $ ->
 
   # Update rating
   $('body').on 'click', '.submit-rating', (event) ->
-    selected = $(this).parent().children('input:checked')
+    selected = $(this).parent().children 'input:checked'
     data =
       value: selected.val()
       id: selected[0].id
     $.post('/lessons/vote', data).done (data) ->
-      $('#rating-' + data.id).html("Current Rating: " + data.ratingAverage)
-      $('#count-' + data.id).html("Current Rating: " + data.ratingCount)
-      debugger
+      $('#rating-' + data.id).html "Current Rating: " + data.ratingAverage
+      $('#count-' + data.id).html "Vote Count: " + data.ratingCount
 
