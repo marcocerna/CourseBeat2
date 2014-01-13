@@ -26,6 +26,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'pry'
   gem 'pry-rails'
+  gem 'factory_girl_rails'
 end
 
 gem 'jquery-rails'

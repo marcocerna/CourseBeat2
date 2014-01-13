@@ -4,7 +4,7 @@ describe LessonsController do
 
   describe "GET index" do
     it "should assign @lessons" do
-      lesson = Lesson.create(title: "Test lesson")
+      lesson = FactoryGirl.create(:lesson)
       get :index
       assigns(:lessons).should == [lesson]
     end
