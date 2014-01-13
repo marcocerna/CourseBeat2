@@ -1,20 +1,17 @@
 $ ->
   # New Lesson modal
-  $('#new-lesson').click ->
-    $('#text-goes-here').empty()
-    new_lesson = JST['templates/new_lesson']()
-    $('#text-goes-here').append(new_lesson)
+  $('#new-lesson').on 'click', (event) ->
+    $('#modal-text').empty()
+    $('#modal-text').append JST['templates/new_lesson']()
 
   # Category button
   $('body').on 'click', '#new-category', (event) ->
-    category = JST['templates/category']()
-    $('#categories-list').append(category)
+    $('#categories-list').append JST['templates/category']()
 
   # Sub Concept button
   $('body').on 'click', '#new-concept', (event) ->
-    concept = JST['templates/sub_concept']()
     list = $(this.parentElement.lastElementChild)
-    list.append(concept)
+    list.append JST['templates/sub_concept']()
 
   # Submit new lesson
   $('#create-lesson').on 'click', (event) ->
@@ -39,18 +36,16 @@ $ ->
     return dataObj
 
   # Show Lesson
-  $('body').on 'click', '.lesson-small', (event) ->
+  $('body').on 'click', '.show-lesson', (event) ->
     lessonID = $(this)[0].id
     $.get('/lessons/' + lessonID).done (data) ->
       $('#index').slideUp()
-      $('#render-data').append(JST['templates/show_lesson'](data))
-      $('#render-data').slideDown()
+      $('#render-data').append(JST['templates/show_lesson'](data)).slideDown()
 
   # Back to Main
   $('body').on 'click', '.back-to-main', (event) ->
     $('#index').slideDown()
-    $('#render-data').slideUp()
-    $('#render-data').empty()
+    $('#render-data').slideUp().empty()
 
   # Only one radio button can be selected at a time
   $('body').on 'click', ':radio', (event) ->
@@ -64,4 +59,7 @@ $ ->
       value: selected.val()
       id: selected[0].id
     $.post('/lessons/vote', data).done (data) ->
-      $(this).parent().children('.current-rating').empty()
+      $('#rating-' + data.id).html("Current Rating: " + data.ratingAverage)
+      $('#count-' + data.id).html("Current Rating: " + data.ratingCount)
+      debugger
+

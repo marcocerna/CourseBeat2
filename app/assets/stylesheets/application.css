@@ -43,7 +43,7 @@ body {
   padding: 10px;
 }
 
-#text-goes-here input {
+#modal-text input {
   border: 0px;
   border-bottom: 1px solid black;
   width: 350px;

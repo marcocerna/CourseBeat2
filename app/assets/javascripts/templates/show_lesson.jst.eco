@@ -6,7 +6,8 @@
   <h3><%= cat %></h3>
   <% for concept in array: %>
     <h4 style="margin:5px"><%= concept.info %></h4>
-    <p class="current-rating">Current Rating: <%= concept.ratingAverage %></p>
+    <p id="rating-<%= concept.id %>" class="current-rating">Current Rating: <%= concept.ratingAverage %></p>
+    <p id="count-<%= concept.id %>" class="current-count">Vote Count: <%= concept.ratingCount %></p>
     <div>
       <input id=<%= concept.id %> type="radio" value="1"> 1
       <input id=<%= concept.id %> type="radio" value="2"> 2
