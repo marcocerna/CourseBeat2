@@ -61,18 +61,30 @@ body {
 }
 
 .show-lesson {
-  background-color:#bdc3c7;
+  background-color:rgba(34, 34, 34, .85);
+  color: #bdc3c7;
   width:300px;
   padding:5px;
   margin:5px;
-  border:1px solid black;
+  /*border:1px solid black;*/
   cursor:pointer;
   border-radius: 5px;
   clear:both;
+  font-family: Raleway;
+}
+
+.show-lesson a {
+  color: #bdc3c7;
+}
+
+.show-lesson:hover {
+  background-color: #c0392b;
+  color: white;
 }
 
 .show-category {
-  background-color:rgba(192, 192, 192, .85);
+  background-color:rgba(34, 34, 34, .85);
+  color: #C0C0C0;
   width:500px;
   padding:5px;
   border: 1px solid black;
