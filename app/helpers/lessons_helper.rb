@@ -24,7 +24,8 @@ module LessonsHelper
 
   def calculate_rating
     numerator = (@concept.ratingAverage * (@concept.ratingCount - 1)) + params[:value].to_f
-    numerator / @concept.ratingCount
+    long_num = numerator / @concept.ratingCount
+    long_num.round(2)
   end
 
 end

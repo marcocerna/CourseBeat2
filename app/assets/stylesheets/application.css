@@ -115,5 +115,6 @@ body {
 #show-lesson-title {
   margin-left: auto;
   margin-right: auto;
-  width: 20%;
+  width: 50%;
+  text-align: center;
 }

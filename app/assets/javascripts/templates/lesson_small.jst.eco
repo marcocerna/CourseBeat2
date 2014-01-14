@@ -1,4 +1,4 @@
-<div class="show-lesson">
+<div id=<%= @id %> class="show-lesson">
   <h3><%= @title %></h3>
   <a href="#">Show</a>
 </div>

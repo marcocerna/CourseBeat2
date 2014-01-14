@@ -60,6 +60,7 @@ $ ->
 
   # Update rating
   $('body').on 'click', '.submit-rating', (event) ->
+    event.preventDefault()
     selected = $(this).parent().children 'input:checked'
     data =
       value: selected.val()
