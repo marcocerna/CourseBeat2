@@ -76,9 +76,10 @@ $ ->
   $('body').on 'click', '#delete-lesson', (event) ->
     event.preventDefault()
     id = this.parentElement.id
-    $.ajax
-      url: "/lessons/" + id
-      type: "DELETE"
-      success: (result) ->
-        $('#' + id).remove()
-        backToMain()
+    if confirm "Are you sure you want to delete this lesson?"
+      $.ajax
+        url: "/lessons/" + id
+        type: "DELETE"
+        success: (result) ->
+          $('#' + id).remove()
+          backToMain()
