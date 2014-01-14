@@ -2,13 +2,19 @@
 <h1><%= @lesson.title %></h1>
 
 <% for cat, array of @categories: %>
-  <div style="background-color:rgba(192, 192, 192, .85);width:500px;padding:5px;border: 1px solid black; margin: 5px">
+  <div class="show-category">
   <h3><%= cat %></h3>
   <% for concept in array: %>
-    <h4 style="margin:5px"><%= concept.info %></h4>
-    <p id="rating-<%= concept.id %>" class="current-rating">Current Rating: <%= concept.ratingAverage %></p>
-    <p id="count-<%= concept.id %>" class="current-count">Vote Count: <%= concept.ratingCount %></p>
-    <div>
+
+    <div class="left">
+      <h4 style="margin:5px"><%= concept.info %></h4>
+    </div>
+    <div class="right">
+      <p> <span id="rating-<%= concept.id %>" class="current-rating">Current Rating: <%= concept.ratingAverage %></span> -
+      <span id="count-<%= concept.id %>" class="current-count">Vote Count: <%= concept.ratingCount %></span> </p>
+    </div>
+
+    <div class="clear">
       <input id=<%= concept.id %> type="radio" value="1"> 1
       <input id=<%= concept.id %> type="radio" value="2"> 2
       <input id=<%= concept.id %> type="radio" value="3"> 3

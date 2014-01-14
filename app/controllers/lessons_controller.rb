@@ -6,7 +6,7 @@ class LessonsController < ApplicationController
   end
 
   def create
-    binding.pry
+    # Refactor: silent error when category has no concepts
     @lesson = Lesson.create(params[:lesson])
     create_categories if params[:categories]
     render json: @lesson, status: 201
@@ -23,7 +23,6 @@ class LessonsController < ApplicationController
     @concept = SubConcept.find(params[:id])
     @concept.update_attributes(ratingCount: @concept.ratingCount + 1)
     @concept.update_attributes(ratingAverage: calculate_rating)
-
     render json: @concept, status: 201
   end
 

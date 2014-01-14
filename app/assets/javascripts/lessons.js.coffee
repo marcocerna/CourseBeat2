@@ -1,4 +1,10 @@
 $ ->
+  # Toggle View Lessons
+  $('#toggle-show-lessons').on 'click', (event) ->
+    console.log "yay"
+    $('#welcome-div').slideUp()
+    $('#show-lessons').toggleClass('hide')
+
   # New Lesson modal
   $('#new-lesson').on 'click', (event) ->
     $('#modal-text').empty()

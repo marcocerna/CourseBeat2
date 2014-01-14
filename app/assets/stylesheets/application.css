@@ -30,12 +30,22 @@ body {
   font-size: 50px;
 }
 
+#welcome-div {
+  opacity: 80%;
+}
+
 #show-lessons {
   font-family: Raleway;
 }
 
 #your-lessons {
   font-family: Raleway;
+}
+
+/*To line New Lesson button with rest of that header*/
+#new-lesson {
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .category-div {
@@ -48,4 +58,38 @@ body {
   border-bottom: 1px solid black;
   width: 350px;
   margin-bottom: 5px;
+}
+
+.show-lesson {
+  background-color:#bdc3c7;
+  width:300px;
+  padding:5px;
+  margin:5px;
+  border:1px solid black;
+  cursor:pointer;
+  border-radius: 5px;
+  clear:both;
+}
+
+.show-category {
+  background-color:rgba(192, 192, 192, .85);
+  width:500px;
+  padding:5px;
+  border: 1px solid black;
+  margin: 5px;
+  border-radius: 5px;
+  clear: both;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  text-align: right;
+  float: right;
+}
+
+.clear {
+  clear:both;
 }
