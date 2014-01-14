@@ -2,5 +2,5 @@
   <h3><%= @title %></h3>
   <a href="#">Click to View</a>
   <a href="#">Edit</a>
-  <a href="#">Delete</a>
+  <a href="#" id="delete-lesson">Delete</a>
 </div>

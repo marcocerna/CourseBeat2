@@ -49,6 +49,9 @@ $ ->
 
   # Back to Main
   $('body').on 'click', '.back-to-main', (event) ->
+    backToMain()
+
+  backToMain = ->
     $('#render-data').slideUp()
     $('#index').slideDown()
     setTimeout $('#render-data').empty(), 500
@@ -69,3 +72,13 @@ $ ->
       $('#rating-' + data.id).html "Rating: " + data.ratingAverage
       $('#count-' + data.id).html "Vote Count: " + data.ratingCount
 
+  # Delete Lesson
+  $('body').on 'click', '#delete-lesson', (event) ->
+    event.preventDefault()
+    id = this.parentElement.id
+    $.ajax
+      url: "/lessons/" + id
+      type: "DELETE"
+      success: (result) ->
+        $('#' + id).remove()
+        backToMain()
