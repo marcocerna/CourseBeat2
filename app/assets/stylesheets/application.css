@@ -86,12 +86,14 @@ body {
 .show-category {
   background-color:rgba(34, 34, 34, .85);
   color: #C0C0C0;
-  width: 50%;
+  width: 75%;
   padding:5px;
   border: 1px solid black;
   margin: 5px;
   border-radius: 5px;
   clear: both;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .left {
@@ -108,4 +110,10 @@ body {
   margin-bottom: 10px;
   margin-top: 10px;
   margin-left: 5px;
+}
+
+#show-lesson-title {
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
 }

@@ -1,7 +1,6 @@
 $ ->
   # Toggle View Lessons
   $('#toggle-show-lessons').on 'click', (event) ->
-    console.log "yay"
     $('#welcome-div').slideUp()
     $('#show-lessons').toggleClass('hide')
 
@@ -66,6 +65,6 @@ $ ->
       value: selected.val()
       id: selected[0].id
     $.post('/lessons/vote', data).done (data) ->
-      $('#rating-' + data.id).html "Current Rating: " + data.ratingAverage
+      $('#rating-' + data.id).html "Rating: " + data.ratingAverage
       $('#count-' + data.id).html "Vote Count: " + data.ratingCount
 
