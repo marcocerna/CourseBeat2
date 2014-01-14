@@ -1,4 +1,6 @@
 <div id=<%= @id %> class="show-lesson">
   <h3><%= @title %></h3>
-  <a href="#">Show</a>
+  <a href="#">Click to View</a>
+  <a href="#">Edit</a>
+  <a href="#">Delete</a>
 </div>

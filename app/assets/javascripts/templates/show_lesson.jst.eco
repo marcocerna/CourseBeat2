@@ -1,5 +1,8 @@
 <a class="back-to-main" href="#">Back to Main</a>
-<h1 id="show-lesson-title"><%= @lesson.title %></h1>
+<h1 id="show-lesson-title" class="center"><%= @lesson.title %></h1>
+<div class="center">
+  <a href="#">Edit</a> <span class="center" style="font-size:30px"> - </span> <a href="#">Delete</a>
+</div>
 
 <% for cat, array of @categories: %>
   <div class="show-category">
