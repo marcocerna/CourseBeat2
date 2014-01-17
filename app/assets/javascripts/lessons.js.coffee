@@ -78,8 +78,9 @@ $ ->
     id = this.parentElement.id
     $.get('/lessons/' + id).done (data) ->
       console.log data
+      console.log data.lesson.title
       $('#modal-text').empty()
-      $('#modal-text').append JST['templates/new_lesson']()
+      $('#modal-text').append JST['templates/edit_lesson'](data)
       $('.modal').modal('show')
 
   # Update Lesson - Submit Data

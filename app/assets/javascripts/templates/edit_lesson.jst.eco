@@ -1,0 +1,6 @@
+<input id="new-lesson-text" type="text" value="<%= @lesson.title %>">
+
+<a id="new-category" class="btn btn-primary" style="float:right">Add Category</a>
+<br><br>
+<div id="categories-list">
+</div>
