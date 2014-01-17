@@ -72,9 +72,18 @@ $ ->
       $('#rating-' + data.id).html "Rating: " + data.ratingAverage
       $('#count-' + data.id).html "Vote Count: " + data.ratingCount
 
-  # Update Lesson
+  # Update Lesson - Retrieve Data
   $('body').on 'click', '#update-lesson', (event) ->
     console.log "Edit button was clicked!"
+    id = this.parentElement.id
+    $.get('/lessons/' + id).done (data) ->
+      console.log data
+      $('#modal-text').empty()
+      $('#modal-text').append JST['templates/new_lesson']()
+      $('.modal').modal('show')
+
+  # Update Lesson - Submit Data
+
 
   # Delete Lesson
   $('body').on 'click', '#delete-lesson', (event) ->
