@@ -72,6 +72,10 @@ $ ->
       $('#rating-' + data.id).html "Rating: " + data.ratingAverage
       $('#count-' + data.id).html "Vote Count: " + data.ratingCount
 
+  # Update Lesson
+  $('body').on 'click', '#update-lesson', (event) ->
+    console.log "Edit button was clicked!"
+
   # Delete Lesson
   $('body').on 'click', '#delete-lesson', (event) ->
     event.preventDefault()

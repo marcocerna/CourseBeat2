@@ -26,8 +26,15 @@ class LessonsController < ApplicationController
     render json: @concept, status: 201
   end
 
+  def update
+    @lesson = Lesson.find(params[:id])
+    @lesson.update_attributes(params[:lesson])
+    render json: @lesson, status: 201
+  end
+
   def destroy
     @lesson = Lesson.destroy(params[:id])
     render json: @lesson, status: 201
   end
 end
+

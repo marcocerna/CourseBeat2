@@ -1,6 +1,6 @@
 <div id=<%= @id %> class="show-lesson">
   <h3><%= @title %></h3>
   <a href="#">Click to View</a>
-  <a href="#">Edit</a>
+  <a href="#" id="update-lesson">Edit</a>
   <a href="#" id="delete-lesson">Delete</a>
 </div>
