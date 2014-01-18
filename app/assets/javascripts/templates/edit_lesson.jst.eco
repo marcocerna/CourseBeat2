@@ -3,4 +3,19 @@
 <a id="new-category" class="btn btn-primary" style="float:right">Add Category</a>
 <br><br>
 <div id="categories-list">
+  <% for cat, array of @categories: %>
+
+    <div class="category-div">
+      <input class="category-text" value="<%= cat %>"  ><br>
+      <a href="#" id="new-concept">Add Sub Concept</a>
+      <div id="concept-list">
+
+        <% for concept in array: %>
+          <input class="concept-text" type="text" value="<%= concept.info %>"><br>
+        <% end %>
+
+      </div>
+    </div>
+
+  <% end %>
 </div>

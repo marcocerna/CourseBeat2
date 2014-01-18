@@ -1,5 +1,5 @@
 <div class="category-div">
-  <input class="category-text" placeholder="Category"><br>
+  <input class="category-text" placeholder="Category"  value="<%= @ %>"  ><br>
   <a href="#" id="new-concept">Add Sub Concept</a>
   <div id="concept-list"></div>
 </div>

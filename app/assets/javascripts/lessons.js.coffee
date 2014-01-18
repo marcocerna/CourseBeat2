@@ -4,6 +4,10 @@ $ ->
     $('#welcome-div').slideUp()
     $('#show-lessons').toggleClass('hide')
 
+  ############################
+  ### Creating New Lessons ###
+  ############################
+
   # New Lesson modal
   $('#new-lesson').on 'click', (event) ->
     $('#modal-text').empty()
@@ -11,7 +15,7 @@ $ ->
 
   # Category button
   $('body').on 'click', '#new-category', (event) ->
-    $('#categories-list').append JST['templates/category']()
+    $('#categories-list').append JST['templates/category'](" ")
 
   # Sub Concept button
   $('body').on 'click', '#new-concept', (event) ->
@@ -39,6 +43,10 @@ $ ->
       dataObj[cat] = conceptArray
       conceptArray = []
     return dataObj
+
+  #####################################
+  ### Show Lesson and Update Rating ###
+  #####################################
 
   # Show Lesson
   $('body').on 'click', '.show-lesson', (event) ->
@@ -71,6 +79,10 @@ $ ->
     $.post('/lessons/vote', data).done (data) ->
       $('#rating-' + data.id).html "Rating: " + data.ratingAverage
       $('#count-' + data.id).html "Vote Count: " + data.ratingCount
+
+  ###############################
+  ### Edit and Delete Lessons ###
+  ###############################
 
   # Update Lesson - Retrieve Data
   $('body').on 'click', '#update-lesson', (event) ->
