@@ -1,4 +1,6 @@
 $ ->
+  currentData = null
+
   # Toggle View Lessons
   $('#toggle-show-lessons').on 'click', (event) ->
     $('#welcome-div').slideUp()
@@ -52,6 +54,7 @@ $ ->
   $('body').on 'click', '.show-lesson', (event) ->
     lessonID = $(this)[0].id
     $.get('/lessons/' + lessonID).done (data) ->
+      $('#render-data').data('lesson-data', data)                      # IMPORTANT: We store data here so we don't need to ajax for editing later
       $('#index').slideUp()
       $('#render-data').append(JST['templates/show_lesson'](data)).slideDown()
 
@@ -86,23 +89,18 @@ $ ->
 
   # Update Lesson - Retrieve Data
   $('body').on 'click', '#update-lesson', (event) ->
-    console.log "Edit button was clicked!"
-    id = this.parentElement.id
-    $.get('/lessons/' + id).done (data) ->
-      console.log data
-      console.log data.lesson.title
-      # $('#new-lesson-modal').hide()
-      $('#edit-modal-text').empty()
-      $('#edit-modal-text').append JST['templates/edit_lesson'](data)
-      # $('.modal').modal('show')
+    data = $('#render-data').data('lesson-data')       # Instead of ajax call, we use data already stored in DOM
+    $('#edit-modal-text').empty()
+    $('#edit-modal-text').append JST['templates/edit_lesson'](data)
 
   # Update Lesson - Submit Data
   $('body').on 'click', '#submit-updated-lesson', (event) ->
-    console.log "Submitted Updated Lesson!"
     dataObj = createConceptObj($('.category-text'), $('.concept-text'))
     data =
       lesson: { title: $('#new-lesson-text').val() }
       categories: dataObj
+    console.log data
+    debugger
     $.ajax
       url: "/lessons"
       type: "PUT"
