@@ -54,7 +54,7 @@ body {
   padding: 10px;
 }
 
-#modal-text input {
+#modal-text input, #edit-modal-text input {
   border: 0px;
   border-bottom: 1px solid black;
   width: 350px;

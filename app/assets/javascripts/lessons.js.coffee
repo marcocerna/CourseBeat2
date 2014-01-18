@@ -91,11 +91,25 @@ $ ->
     $.get('/lessons/' + id).done (data) ->
       console.log data
       console.log data.lesson.title
-      $('#modal-text').empty()
-      $('#modal-text').append JST['templates/edit_lesson'](data)
-      $('.modal').modal('show')
+      # $('#new-lesson-modal').hide()
+      $('#edit-modal-text').empty()
+      $('#edit-modal-text').append JST['templates/edit_lesson'](data)
+      # $('.modal').modal('show')
 
   # Update Lesson - Submit Data
+  $('body').on 'click', '#submit-updated-lesson', (event) ->
+    console.log "Submitted Updated Lesson!"
+    dataObj = createConceptObj($('.category-text'), $('.concept-text'))
+    data =
+      lesson: { title: $('#new-lesson-text').val() }
+      categories: dataObj
+    $.ajax
+      url: "/lessons"
+      type: "PUT"
+      data: data
+      success: (result) ->
+        console.log result
+        console.log "Success!"
 
 
   # Delete Lesson

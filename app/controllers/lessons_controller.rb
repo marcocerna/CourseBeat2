@@ -27,6 +27,7 @@ class LessonsController < ApplicationController
   end
 
   def update
+    binding.pry
     @lesson = Lesson.find(params[:id])
     @lesson.update_attributes(params[:lesson])
     render json: @lesson, status: 201
