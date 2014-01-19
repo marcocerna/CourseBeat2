@@ -2,7 +2,7 @@ class LessonsController < ApplicationController
   include LessonsHelper
 
   def index
-    @lessons = Lesson.all
+    @lessons = Lesson.order(:id) # Otherwise updates will reorder them
   end
 
   def create

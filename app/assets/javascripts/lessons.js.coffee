@@ -25,6 +25,8 @@ $ ->
   # Submit new lesson
   $('#create-lesson').on 'click', (event) ->
     dataObj = createConceptObj($('.category-text'), $('.concept-text'))
+    console.log dataObj
+    debugger
     data =
       lesson: { title: $('#new-lesson-text').val() }
       categories: dataObj
@@ -52,8 +54,7 @@ $ ->
   $('body').on 'click', '.show-lesson', (event) ->
     lessonID = $(this)[0].id
     $.get('/lessons/' + lessonID).done (data) ->
-      debugger
-      $('#render-data').data('lesson-data', data)                      # IMPORTANT: We store data here so we don't need to ajax for editing later
+      $('#render-data').data('lesson-data', data)  # IMPORTANT: We store data here so we don't need to ajax for editing later
       $('#index').slideUp()
       $('#render-data').append(JST['templates/show_lesson'](data)).slideDown()
 
@@ -94,20 +95,41 @@ $ ->
 
   # Update Lesson - Submit Data
   $('body').on 'click', '#submit-updated-lesson', (event) ->
-    dataObj = createConceptObj($('.category-text'), $('.concept-text'))
+    catObj = updateCategoryObj $('.category-text')
+    conObj = updateConceptObj $('.concept-text')
     data =
-      lesson: { title: $('#new-lesson-text').val() }
-      categories: dataObj
+      lesson:
+        id: $('#render-data').data('lesson-data').lesson.id
+        title: $('#new-lesson-text').val()
+      categories: catObj
+      concepts: conObj
     console.log data
     debugger
     $.ajax
-      url: "/lessons"
+      url: "/lessons/" + data.lesson.id
       type: "PUT"
       data: data
       success: (result) ->
         console.log result
         console.log "Success!"
 
+  updateCategoryObj = (categories) ->
+    catArray = []
+    for category in categories
+      catObj =
+        id: $(category).attr('id')
+        info: $(category).val()
+      catArray.push catObj
+    return catArray
+
+  updateConceptObj = (concepts) ->
+    conArray = []
+    for concept in concepts
+      conObj =
+        id: $(concept).attr('id')
+        info: $(concept).val()
+      conArray.push conObj
+    return conArray
 
   # Delete Lesson
   $('body').on 'click', '#delete-lesson', (event) ->

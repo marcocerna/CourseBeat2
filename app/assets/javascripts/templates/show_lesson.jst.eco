@@ -1,6 +1,6 @@
 <a class="back-to-main" href="#">Back to Main</a>
-<h1 id="show-lesson-title" class="center"><%= @lesson.title %></h1>
 <div id=<%= @lesson.id %> class="center">
+  <h1 id="show-lesson-title" class="center"><%= @lesson.title %></h1>
   <a href="#" id="update-lesson" data-toggle="modal" data-target="#edit-lesson-modal">Edit</a> <span class="center" style="font-size:30px"> - </span> <a href="#" id="delete-lesson">Delete</a>
 </div>
 
