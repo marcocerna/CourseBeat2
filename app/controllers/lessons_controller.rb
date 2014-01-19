@@ -27,9 +27,19 @@ class LessonsController < ApplicationController
   end
 
   def update
-    binding.pry
     @lesson = Lesson.find(params[:id])
     @lesson.update_attributes(params[:lesson])
+    binding.pry
+    params[:categories].each do |k, cat|
+      # Refactor: when new Category is created (probably an if id = nil or something like that)
+      category = KeyConcept.find(cat["id"])
+      category.update_attributes(info: cat["info"])
+    end
+    params[:concepts].each do |k, con|
+      # Refactor: same as above
+      concept = SubConcept.find(con["id"])
+      concept.update_attributes(info: con["info"])
+    end
     render json: @lesson, status: 201
   end
 
