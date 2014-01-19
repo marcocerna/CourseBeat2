@@ -8,7 +8,7 @@
 <% for cat in @categories: %>
 
   <div class="show-category">
-  <h3><%= cat.title %></h3>
+  <h3><%= cat.info %></h3>
   <% for concept in cat.concepts: %>
 
     <div class="left">
