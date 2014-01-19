@@ -14,10 +14,11 @@ module LessonsHelper
   end
 
   def get_concepts
-    categories = KeyConcept.where(lesson_id: @data["lesson"].id).order(:id)
+    @data = {"lesson" => Lesson.find(params[:id]) }
+    categories = KeyConcept.where(lesson_id: @data["lesson"]["id"]).order(:id)
     concepts = []
     categories.each do |cat|
-      cat["concepts"] = SubConcept.where(key_concept_id: cat.id).order(:id)
+      cat["concepts"] = SubConcept.where(key_concept_id: cat["id"]).order(:id)
       concepts << cat
     end
     @data["categories"] = concepts

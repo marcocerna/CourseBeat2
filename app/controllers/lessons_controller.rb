@@ -13,8 +13,6 @@ class LessonsController < ApplicationController
   end
 
   def show
-    @data = {}
-    @data["lesson"] = Lesson.find(params[:id])
     get_concepts
     render json: @data, status: 201
   end
@@ -27,9 +25,9 @@ class LessonsController < ApplicationController
   end
 
   def update
-    @lesson = Lesson.find(params[:id])
-    @lesson.update_attributes(params[:lesson])
-    binding.pry
+    lesson = Lesson.find(params[:id])
+    @data = {"lesson" => lesson.update_attributes(params[:lesson]) }
+
     params[:categories].each do |k, cat|
       # Refactor: when new Category is created (probably an if id = nil or something like that)
       category = KeyConcept.find(cat["id"])
@@ -40,7 +38,10 @@ class LessonsController < ApplicationController
       concept = SubConcept.find(con["id"])
       concept.update_attributes(info: con["info"])
     end
-    render json: @lesson, status: 201
+
+    get_concepts
+
+    render json: @data, status: 201
   end
 
   def destroy

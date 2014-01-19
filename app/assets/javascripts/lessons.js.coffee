@@ -24,12 +24,9 @@ $ ->
 
   # Submit new lesson
   $('#create-lesson').on 'click', (event) ->
-    dataObj = createConceptObj($('.category-text'), $('.concept-text'))
-    console.log dataObj
-    debugger
     data =
       lesson: { title: $('#new-lesson-text').val() }
-      categories: dataObj
+      categories: createConceptObj($('.category-text'), $('.concept-text'))
     $.post('/lessons', data).done (data) ->
       $('#show-lessons').append JST['templates/lesson_small'](data)
       $('.modal').modal('hide')
@@ -95,23 +92,20 @@ $ ->
 
   # Update Lesson - Submit Data
   $('body').on 'click', '#submit-updated-lesson', (event) ->
-    catObj = updateCategoryObj $('.category-text')
-    conObj = updateConceptObj $('.concept-text')
     data =
       lesson:
-        id: $('#render-data').data('lesson-data').lesson.id
-        title: $('#new-lesson-text').val()
-      categories: catObj
-      concepts: conObj
-    console.log data
-    debugger
+        id:       $('#render-data').data('lesson-data').lesson.id
+        title:    $('#new-lesson-text').val()
+      categories: updateCategoryObj $('.category-text')
+      concepts:   updateConceptObj $('.concept-text')
     $.ajax
       url: "/lessons/" + data.lesson.id
       type: "PUT"
       data: data
       success: (result) ->
-        console.log result
-        console.log "Success!"
+        $('#render-data').data('lesson-data', result)
+        $('#render-data').empty().append(JST['templates/show_lesson'](result))
+        $('.modal').modal('hide')
 
   updateCategoryObj = (categories) ->
     catArray = []
