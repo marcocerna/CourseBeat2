@@ -4,10 +4,12 @@
   <a href="#" id="update-lesson" data-toggle="modal" data-target="#edit-lesson-modal">Edit</a> <span class="center" style="font-size:30px"> - </span> <a href="#" id="delete-lesson">Delete</a>
 </div>
 
-<% for cat, array of @categories: %>
+<%# for cat, array of @categories: %>
+<% for cat in @categories: %>
+
   <div class="show-category">
-  <h3><%= cat %></h3>
-  <% for concept in array: %>
+  <h3><%= cat.title %></h3>
+  <% for concept in cat.concepts: %>
 
     <div class="left">
       <h4 style="margin:5px"><%= concept.info %></h4>
