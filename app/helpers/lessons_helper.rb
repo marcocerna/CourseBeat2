@@ -15,9 +15,10 @@ module LessonsHelper
 
   def get_concepts
     categories = KeyConcept.where(lesson_id: @data["lesson"].id)
-    concepts = {}
+    concepts = []
     categories.each do |cat|
-      concepts[cat.info] = SubConcept.where(key_concept_id: cat.id)
+      cat["concepts"] = SubConcept.where(key_concept_id: cat.id)
+      concepts << cat
     end
     @data["categories"] = concepts
   end

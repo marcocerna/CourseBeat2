@@ -1,6 +1,4 @@
 $ ->
-  currentData = null
-
   # Toggle View Lessons
   $('#toggle-show-lessons').on 'click', (event) ->
     $('#welcome-div').slideUp()
@@ -54,6 +52,7 @@ $ ->
   $('body').on 'click', '.show-lesson', (event) ->
     lessonID = $(this)[0].id
     $.get('/lessons/' + lessonID).done (data) ->
+      debugger
       $('#render-data').data('lesson-data', data)                      # IMPORTANT: We store data here so we don't need to ajax for editing later
       $('#index').slideUp()
       $('#render-data').append(JST['templates/show_lesson'](data)).slideDown()
