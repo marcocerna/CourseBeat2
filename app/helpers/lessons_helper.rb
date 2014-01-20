@@ -3,7 +3,7 @@ module LessonsHelper
   def create_categories
     params[:categories].each do |info, concepts|
       category = KeyConcept.create(info: info, lesson_id: @lesson.id)
-      create_concepts concepts, category if concepts
+      create_concepts concepts, category unless concepts == "0"
     end
   end
 
@@ -30,4 +30,20 @@ module LessonsHelper
     long_num.round(2)
   end
 
+  def update_categories
+    params[:categories].each do |k, cat|
+      # Refactor: when new Category is created (probably an if id = nil or something like that)
+      category = KeyConcept.find(cat["id"])
+      category.update_attributes(info: cat["info"])
+    end
+    update_concepts
+  end
+
+  def update_concepts
+    params[:concepts].each do |k, con|
+      # Refactor: same as above
+      concept = SubConcept.find(con["id"])
+      concept.update_attributes(info: con["info"])
+    end
+  end
 end

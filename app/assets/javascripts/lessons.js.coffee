@@ -37,9 +37,11 @@ $ ->
     for category in categories
       cat = $(category).val()
       concepts = $(category).parent().find('.concept-text')
+      concepts = 0 unless concepts.val()
       for concept in concepts
         conceptArray.push($(concept).val())
       dataObj[cat] = conceptArray
+      dataObj[cat] = 0 if `concepts === 0`
       conceptArray = []
     return dataObj
 
@@ -111,7 +113,7 @@ $ ->
     catArray = []
     for category in categories
       catObj =
-        id: $(category).attr('id')
+        id: $(category).attr 'id'
         info: $(category).val()
       catArray.push catObj
     return catArray
@@ -120,7 +122,7 @@ $ ->
     conArray = []
     for concept in concepts
       conObj =
-        id: $(concept).attr('id')
+        id: $(concept).attr 'id'
         info: $(concept).val()
       conArray.push conObj
     return conArray

@@ -14,6 +14,10 @@
 
 @import url(http://fonts.googleapis.com/css?family=Raleway);
 
+html, body {
+  height: 100%;
+}
+
 body {
   background:
     linear-gradient(
