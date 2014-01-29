@@ -1,4 +1,10 @@
 $ ->
+  # Navbar Link to Home
+  $('.navbar-brand').on 'click', (event) ->
+    console.log "This should load the home page."
+    $('#render-data').slideUp()
+    $('#welcome-div').slideDown()
+
   # Toggle View Lessons
   $('#toggle-show-lessons').on 'click', (event) ->
     $('#welcome-div').slideUp()
