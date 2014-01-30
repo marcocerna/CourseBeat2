@@ -1,14 +1,14 @@
 $ ->
-  # Navbar Link to Home
+  # Navbar Link to Welcome Page
   $('.navbar-brand').on 'click', (event) ->
-    console.log "This should load the home page."
-    $('#render-data').slideUp()
     $('#welcome-div').slideDown()
+    $('#render-data').slideUp()
+    $('#show-lessons').slideUp()
 
   # Toggle View Lessons
   $('#toggle-show-lessons').on 'click', (event) ->
     $('#welcome-div').slideUp()
-    $('#show-lessons').toggleClass('hide')
+    $('#show-lessons').removeClass('hide').slideDown()
 
   ############################
   ### Creating New Lessons ###
@@ -60,8 +60,8 @@ $ ->
     lessonID = $(this)[0].id
     $.get('/lessons/' + lessonID).done (data) ->
       $('#render-data').data('lesson-data', data)  # IMPORTANT: We store data here so we don't need to ajax for editing later
-      $('#index').slideUp()
-      $('#render-data').append(JST['templates/show_lesson'](data)).slideDown()
+      $('#show-lessons').slideUp()
+      $('#render-data').empty().append(JST['templates/show_lesson'](data)).slideDown()
 
   # Back to Main
   $('body').on 'click', '.back-to-main', (event) ->
@@ -69,7 +69,7 @@ $ ->
 
   backToMain = ->
     $('#render-data').slideUp()
-    $('#index').slideDown()
+    $('#show-lessons').slideDown()
     setTimeout $('#render-data').empty(), 500
 
   # Only one radio button can be selected at a time
