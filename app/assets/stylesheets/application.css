@@ -130,3 +130,8 @@ body {
 .center a {
   font-size: 30px;
 }
+
+#toggle-show-lessons:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
