@@ -36,7 +36,8 @@ body {
 }
 
 #welcome-div {
-  opacity: 80%;
+  opacity: 0.85;
+  text-align:center;
 }
 
 #show-lessons {
