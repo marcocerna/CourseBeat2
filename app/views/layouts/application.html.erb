@@ -13,16 +13,16 @@
   <a class="navbar-brand" href="#">CourseBeat</a>
   <ul class="nav navbar-nav navbar-right">
 
-      <%# if current_user %>
-        <li><%#= link_to "Welcome, " + current_user.username, instructor_path(current_user.instructor_secret_code) %></li>
-        <li><%#= link_to "Logout", logout_path, method: "get" %></li>
-      <%# else %>
-        <li><%#= link_to "Sign Up", new_instructor_path %></li>
-        <li><%#= link_to "Login", new_session_path, method: "get" %></li>
-      <%# end %>
+    <%# if current_user %>
+      <li><%#= link_to "Welcome, " + current_user.username, instructor_path(current_user.instructor_secret_code) %></li>
+      <li><%#= link_to "Logout", logout_path, method: "get" %></li>
+    <%# else %>
+      <li><%#= link_to "Sign Up", new_instructor_path %></li>
+      <li><%#= link_to "Login", new_session_path, method: "get" %></li>
+    <%# end %>
 
-      <li><a href="">Sign Up</a></li>
-      <li><a href="">Login</a></li>
+    <li id="sign-up" data-toggle="modal" data-target="#new-lesson-modal"><a href="#">Sign Up</a></li>
+    <li id="login"><a href="#">Login</a></li>
 
   </ul>
 </nav>

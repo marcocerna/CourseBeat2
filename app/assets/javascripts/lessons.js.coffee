@@ -1,4 +1,17 @@
 $ ->
+
+  #####################################################
+  # This code is for login and signup
+  # Move it to a separate JS file later once you know how to have multiple jquery files
+
+  $('#sign-up').on 'click', (event) ->
+    # event.preventDefault()
+
+
+
+
+
+  #####################################################
   # Navbar Link to Welcome Page
   $('.navbar-brand').on 'click', (event) ->
     $('#welcome-div').slideDown()
